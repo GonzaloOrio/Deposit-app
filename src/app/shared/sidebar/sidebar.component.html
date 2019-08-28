@@ -9,7 +9,7 @@
           </div>
 
           <div class="text-wrapper">
-            <p class="profile-name">Cristobal Colón</p>
+            <p class="profile-name">{{ user?.name }}</p>
             <div>
               <small class="designation text-muted">Gerente</small>
             </div>
@@ -27,9 +27,9 @@
     </li>
 
     <li class="nav-item">
-      <a [routerLink]="['/deposit-withdraw']" routerLinkActive="router-link-active" class="nav-link cursor">
+      <a [routerLink]="['/deposit-expenditure']" routerLinkActive="router-link-active" class="nav-link cursor">
         <i class="menu-icon fa fa-clipboard-list"></i>
-        <span class="menu-title">Ingresos y Retiradas</span>
+        <span class="menu-title">Ingresos y Gastos</span>
       </a>
     </li>
 

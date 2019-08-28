@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Detalle de Ingresos/Gastos</h4>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+              <th>Tipo</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- <tr *ngFor="let item of items | orderItems"> -->
+            <tr *ngFor="let item of items | orderItems">
+              <td>{{ item?.description }}</td>
+              <td>{{ item?.amount }}</td>
+              <td>
+                <span
+                  [ngClass]="{'text-success': item?.type === 'deposit', 'text-danger': item?.type === 'expenditure'}">
+                  {{ item?.type }}
+                </span>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger" (click)="deleteItem(item.uid)">
+                  <i class="fa fa-trash"></i>
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+</div>
