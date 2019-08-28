@@ -1,8 +1,13 @@
 import * as fromItems from './deposit-expenditure.actions';
 import { DepositExpenditure } from './deposit-expenditure.model';
+import { AppState } from '../app.reducer';
 
 export interface ItemsState {
   items: DepositExpenditure[];
+}
+
+export interface AppItemsState extends AppState {
+  items: ItemsState;
 }
 
 const itemsInitState: ItemsState = {

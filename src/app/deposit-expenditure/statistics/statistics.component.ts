@@ -2,9 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DepositExpenditure } from '../deposit-expenditure.model';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../app.reducer';
 
-import { MultiDataSet, Label } from 'ng2-charts';
+import { Label } from 'ng2-charts';
+
+import { AppItemsState } from '../deposit-expenditure.reducer';
 
 @Component({
   selector: 'app-statistics',
@@ -25,7 +26,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   public doughnutChartLabels: Label[] = ['Ingresos', 'Gastos'];
   public doughnutChartData: any = [];
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppItemsState>) {}
 
   ngOnInit() {
     this.itemsSubscription = this.store.select('items').subscribe(data => {

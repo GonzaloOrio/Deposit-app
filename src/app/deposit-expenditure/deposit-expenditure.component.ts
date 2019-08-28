@@ -6,10 +6,11 @@ import { DepositExpenditureService } from './deposit-expenditure.service';
 import Swal from 'sweetalert2';
 
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { Subscription } from 'rxjs';
 
 import { ActivateLoadingAction, DeactivateLoadingAction } from '../shared/ui.actions';
+
+import { AppItemsState } from './deposit-expenditure.reducer';
 
 @Component({
   selector: 'app-deposit-expenditure',
@@ -22,7 +23,7 @@ export class DepositExpenditureComponent implements OnInit, OnDestroy {
   loading: boolean;
   subscription: Subscription = new Subscription();
 
-  constructor(public depExpService: DepositExpenditureService, private store: Store<AppState>) {}
+  constructor(public depExpService: DepositExpenditureService, private store: Store<AppItemsState>) {}
 
   ngOnInit() {
     this.depositForm = new FormGroup({
@@ -41,7 +42,6 @@ export class DepositExpenditureComponent implements OnInit, OnDestroy {
 
   changeType(newType) {
     this.type = newType;
-    console.log('this.type es::::', this.type);
   }
 
   addDepositExpenditure() {

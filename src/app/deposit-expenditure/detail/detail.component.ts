@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../app.reducer';
 import { Subscription } from 'rxjs';
 import { DepositExpenditure } from '../deposit-expenditure.model';
-import { filter } from 'rxjs/operators';
 import { DepositExpenditureService } from '../deposit-expenditure.service';
+import { AppItemsState } from '../deposit-expenditure.reducer';
 
 import Swal from 'sweetalert2';
 
@@ -17,21 +16,12 @@ export class DetailComponent implements OnInit, OnDestroy {
   itemsSubscription: Subscription = new Subscription();
   items: DepositExpenditure[] = [];
 
-  constructor(private store: Store<AppState>, public depExpService: DepositExpenditureService) {}
+  constructor(private store: Store<AppItemsState>, public depExpService: DepositExpenditureService) {}
 
   ngOnInit() {
-    this.itemsSubscription = this.store
-      .select('items')
-      // .pipe(
-      //   filter((data: any) => {
-      //     return data.items.length >= 1;
-      //   })
-      // )
-      .subscribe(data => {
-        console.log('entra subscribe::', data);
-
-        this.items = data.items;
-      });
+    this.itemsSubscription = this.store.select('items').subscribe(data => {
+      this.items = data.items;
+    });
   }
 
   ngOnDestroy() {

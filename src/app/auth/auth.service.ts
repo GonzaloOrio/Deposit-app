@@ -26,7 +26,6 @@ export class AuthService {
 
   initAuthListener() {
     this.afAuth.authState.subscribe((fbUser: firebase.User) => {
-      console.log('fbUser', fbUser);
       if (fbUser) {
         this.userSubscription = this.afDB
           .doc(`${fbUser.uid}/user`)
